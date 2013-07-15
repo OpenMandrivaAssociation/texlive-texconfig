@@ -1,11 +1,11 @@
-# revision 26689
+# revision 27343
 # category TLCore
 # catalog-ctan undef
 # catalog-date undef
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-texconfig
-Version:	20120808
+Version:	20121030
 Release:	1
 Summary:	TeXLive texconfig package
 Group:		Publishing
@@ -13,7 +13,6 @@ URL:		http://tug.org/texlive
 License:	http://www.tug.org/texlive/LICENSE.TL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/texconfig.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/texconfig.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/texconfig.x86_64-linux.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -34,6 +33,7 @@ TeXLive texconfig package.
 #-----------------------------------------------------------------------
 %files
 %{_bindir}/texconfig
+%{_texmfdir}/scripts/tetex/texconfig.sh
 %{_texmfdir}/texconfig/README
 %{_texmfdir}/texconfig/g/generic
 %{_texmfdir}/texconfig/tcfmgr
@@ -47,14 +47,15 @@ TeXLive texconfig package.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a0 -a1
 
 %build
 
 %install
-# shell script
 mkdir -p %{buildroot}%{_bindir}
-cp -fpa bin/x86_64-linux/texconfig %{buildroot}%{_bindir}
+pushd %{buildroot}%{_bindir}
+    ln -sf %{_texmfdir}/scripts/tetex/texconfig.sh texconfig
+popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -62,6 +63,10 @@ mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
 
 
 %changelog
+* Tue Oct 30 2012 Paulo Andrade <pcpa@mandriva.com.br> 20121030-1
++ Revision: 820856
+- Update to latest release.
+
 * Wed Aug 08 2012 Paulo Andrade <pcpa@mandriva.com.br> 20120808-1
 + Revision: 812891
 - Update to latest release.
