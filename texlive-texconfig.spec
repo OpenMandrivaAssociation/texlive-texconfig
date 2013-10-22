@@ -5,7 +5,7 @@
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-texconfig
-Version:	20131010
+Version:	20131022
 Release:	1
 Summary:	TeXLive texconfig package
 Group:		Publishing
