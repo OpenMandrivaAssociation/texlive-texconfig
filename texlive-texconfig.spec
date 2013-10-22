@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-texconfig
 Version:	20131022
-Release:	1
+Release:	2
 Summary:	TeXLive texconfig package
 Group:		Publishing
 URL:		http://tug.org/texlive
@@ -54,7 +54,7 @@ TeXLive texconfig package.
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/tetex/texconfig.sh texconfig
+    ln -sf %{_texmfdistdir}/scripts/texlive/texconfig.sh texconfig
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
